@@ -5,8 +5,9 @@ namespace AgetalkDDD\Academico\Application;
 
 use AgetalkDDD\Academico\Domain\Model\AlunoDTO;
 use AgetalkDDD\Academico\Domain\Model\AlunoRepository;
+use AgetalkDDD\Shared\Application\ApplicationService;
 
-final class DesativarAluno
+final class DesativarAluno implements ApplicationService
 {
     private AlunoRepository $repository;
 

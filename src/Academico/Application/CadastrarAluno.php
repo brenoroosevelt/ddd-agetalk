@@ -6,8 +6,9 @@ namespace AgetalkDDD\Academico\Application;
 use AgetalkDDD\Academico\Domain\Model\AlunoDTO;
 use AgetalkDDD\Academico\Domain\Model\AlunoFactory;
 use AgetalkDDD\Academico\Domain\Model\AlunoRepository;
+use AgetalkDDD\Shared\Application\ApplicationService;
 
-final class CadastrarAluno
+final class CadastrarAluno implements ApplicationService
 {
     private AlunoFactory $factory;
     private AlunoRepository $repository;
