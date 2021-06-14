@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+<div class="container">
+<div id="app" style="margin-top: 25px">
+    <h3>Agetalk - Domain-Driven Design</h3>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Cadastro de Alunos</h5>
+            <form>
+                <div class="form-row">
+                    <div class="col">
+                            <input v-model="nome" type="text" class="form-control" placeholder="Nome">
+                    </div>
+                    <div class="col">
+                            <input v-model="email" type="text" class="form-control" placeholder="E-mail">
+                    </div>
+                    <div class="col">
+                        <button @click.prevent="adicionar()" type="button" class="btn btn-primary form-control">Adicionar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="15%">Matrícula</th>
+                    <th width="40%">Nome</th>
+                    <th width="20%">Email</th>
+                    <th width="10%">Email</th>
+                    <th width="15%" class="center-align">&nbsp;</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr v-for="(aluno, index) in alunos" :key="index" v-bind:class="{'text-danger': !aluno.ativo}" >
+                    <td>{{ aluno.matricula }} </td>
+                    <td>{{ aluno.nome }} </td>
+                    <td>{{ aluno.email }}</td>
+                    <td>{{ aluno.ativo === true ? 'Ativo' : 'Inativo' }}</td>
+                    <td class="center-align">
+                        <button v-if="aluno.ativo" @click.prevent="desativar(aluno)" type="button" class="btn btn-danger">Desativar</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+
+
+</div>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            alunos : [],
+            nome: "",
+            email: ""
+        },
+        created() {
+            this.refresh();
+        },
+        methods: {
+            refresh() {
+                axios.get('/alunos')
+                    .then(response => {
+                        this.alunos = response.data
+                    }).catch(error => this.showError(error));;
+            },
+            adicionar() {
+                axios.post('/alunos', { nome: this.nome, email: this.email})
+                    .then(response => {
+                        this.refresh();
+                        this.nome = "";
+                        this.email = "";
+                    }).catch(error => {
+                        this.showError(error);
+                } );
+            },
+            desativar(user) {
+                axios.delete('/alunos/' + user.id).then(response => this.refresh()).catch(error => this.showError(error));
+            },
+            showError(error) {
+                Swal.fire({
+                    title: error.response.data.message,
+                    icon: 'error',
+                    confirmButtonText: 'ok'
+                })
+            }
+        }
+    });
+</script>
+</body>
+</html>
