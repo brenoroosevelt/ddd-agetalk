@@ -13,7 +13,7 @@ $ composer update
 ```
 ``` bash
 $ cd public
-$ php -S localhost:8989 public
+$ php -S localhost:8989
 ```
 ### Endpoints
 * `/`: tela de cadastro; 
