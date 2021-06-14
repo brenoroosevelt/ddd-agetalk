@@ -16,7 +16,7 @@ $ cd public
 $ php -S localhost:8989 public
 ```
 ### Endpoints
-* `/`: Tela de cadastro 
-* `GET` `/alunos`: Lista todos os alunos;  
-* `POST` `/alunos` JSON `{nome: '...', 'email': '...'}`: Insere um aluno;
-* `DELETE` `/alunos/{id}`: Desativa um aluno.  
+* `/`: tela de cadastro; 
+* `GET` `/alunos`: lista todos os alunos;  
+* `POST` `/alunos` JSON `{nome: '...', 'email': '...'}`: insere um aluno;
+* `DELETE` `/alunos/{id}`: desativa um aluno.  
