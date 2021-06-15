@@ -6,9 +6,10 @@ namespace AgetalkDDD\Shared\Infrastructure\Delivery\Http;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 
-final class JsonResponse
+final class JsonResponseFactory implements ResponseFactory
 {
     const HTTP_STATUS_OK = 200;
+    const HTTP_STATUS_CREATED = 201;
     const HTTP_STATUS_ERROR = 400;
 
     private ResponseFactoryInterface $responseFactory;
@@ -26,6 +27,11 @@ final class JsonResponse
     public function error($data = null): ResponseInterface
     {
         return $this->newJson(self::HTTP_STATUS_ERROR, $data);
+    }
+
+    public function created($data = null): ResponseInterface
+    {
+        return $this->newJson(self::HTTP_STATUS_CREATED, $data);
     }
 
     private function newJson(int $status, $data = null): ResponseInterface

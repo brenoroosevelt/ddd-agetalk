@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Academico\Application;
 
-class DesativarAlunoCommand
+final class DesativarAlunoCommand
 {
     private string $id;
 

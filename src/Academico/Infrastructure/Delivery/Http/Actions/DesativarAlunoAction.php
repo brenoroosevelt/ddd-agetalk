@@ -5,17 +5,17 @@ namespace AgetalkDDD\Academico\Infrastructure\Delivery\Http\Actions;
 
 use AgetalkDDD\Academico\Application\DesativarAluno;
 use AgetalkDDD\Academico\Application\DesativarAlunoCommand;
-use AgetalkDDD\Shared\Infrastructure\Delivery\Http\ActionInterface;
-use AgetalkDDD\Shared\Infrastructure\Delivery\Http\JsonResponse;
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Action;
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\ResponseFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class DesativarAlunoAction implements ActionInterface
+final class DesativarAlunoAction implements Action
 {
     private DesativarAluno $desativarAluno;
-    private JsonResponse $response;
+    private ResponseFactory $response;
 
-    public function __construct(DesativarAluno $desativarAluno, JsonResponse $response)
+    public function __construct(DesativarAluno $desativarAluno, ResponseFactory $response)
     {
         $this->desativarAluno = $desativarAluno;
         $this->response = $response;

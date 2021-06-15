@@ -6,10 +6,10 @@ namespace AgetalkDDD\Academico\Infrastructure\Delivery\Http\Routes;
 use AgetalkDDD\Academico\Infrastructure\Delivery\Http\Actions\CadastrarAlunoAction;
 use AgetalkDDD\Academico\Infrastructure\Delivery\Http\Actions\DesativarAlunoAction;
 use AgetalkDDD\Academico\Infrastructure\Delivery\Http\Actions\ListarTodosAlunosAction;
-use AgetalkDDD\Shared\Infrastructure\Delivery\Http\RouterProviderInterface;
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\RouterProvider;
 use League\Route\Router;
 
-final class ApiRouterProvider implements RouterProviderInterface
+final class ApiRouterProvider implements RouterProvider
 {
     public function register(Router $router): void
     {

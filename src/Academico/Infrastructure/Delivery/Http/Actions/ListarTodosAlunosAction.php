@@ -4,17 +4,17 @@ declare(strict_types=1);
 namespace AgetalkDDD\Academico\Infrastructure\Delivery\Http\Actions;
 
 use AgetalkDDD\Academico\Application\ListarTodosAlunos;
-use AgetalkDDD\Shared\Infrastructure\Delivery\Http\ActionInterface;
-use AgetalkDDD\Shared\Infrastructure\Delivery\Http\JsonResponse;
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Action;
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\ResponseFactory;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class ListarTodosAlunosAction implements ActionInterface
+final class ListarTodosAlunosAction implements Action
 {
     private ListarTodosAlunos $listarTodosAlunos;
-    private JsonResponse $response;
+    private ResponseFactory $response;
 
-    public function __construct(ListarTodosAlunos $listarTodosAlunos, JsonResponse $response)
+    public function __construct(ListarTodosAlunos $listarTodosAlunos, ResponseFactory $response)
     {
         $this->listarTodosAlunos = $listarTodosAlunos;
         $this->response = $response;

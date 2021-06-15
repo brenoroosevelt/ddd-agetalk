@@ -11,9 +11,9 @@ use Throwable;
 
 final class ErrorHandlerMiddleware implements MiddlewareInterface
 {
-    private JsonResponse $response;
+    private ResponseFactory $response;
 
-    public function __construct(JsonResponse $response)
+    public function __construct(ResponseFactory $response)
     {
         $this->response = $response;
     }

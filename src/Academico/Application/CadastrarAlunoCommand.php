@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Academico\Application;
 
-class CadastrarAlunoCommand
+final class CadastrarAlunoCommand
 {
     private string $nome;
     private string $email;

@@ -28,7 +28,7 @@ final class Application
         return $this->router;
     }
 
-    public function routerProvider(RouterProviderInterface $routerProvider)
+    public function routerProvider(RouterProvider $routerProvider)
     {
         $routerProvider->register($this->router);
     }

@@ -5,7 +5,7 @@ namespace AgetalkDDD\Shared\Infrastructure\Delivery\Http;
 
 use League\Route\Router;
 
-interface RouterProviderInterface
+interface RouterProvider
 {
     public function register(Router $router): void;
 }
