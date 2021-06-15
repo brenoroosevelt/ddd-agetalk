@@ -4,7 +4,7 @@ declare(strict_types=1);
 use AgetalkDDD\Academico\Infrastructure\Delivery\Http\Actions\CadastrarAlunoAction;
 use AgetalkDDD\Academico\Infrastructure\Delivery\Http\Actions\DesativarAlunoAction;
 use AgetalkDDD\Academico\Infrastructure\Delivery\Http\Actions\ListarTodosAlunosAction;
-use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Http;
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Application;
 use AgetalkDDD\Academico\Infrastructure\Persistence\PersistenceServiceProvider;
 use AgetalkDDD\Shared\Infrastructure\Delivery\Http\ErrorHandlerMiddleware;
 use AgetalkDDD\Shared\Infrastructure\Delivery\Http\HttpServiceProvider;
@@ -17,20 +17,20 @@ include '../vendor/autoload.php';
 // Application
 $container = new Container();
 $container->addProvider(new PersistenceServiceProvider(), new HttpServiceProvider());
-$http = $container->get(Http::class);
+$app = $container->get(Application::class);
 
 // Routes
-$http->router()->map('GET', '/alunos', ListarTodosAlunosAction::class);
-$http->router()->map('DELETE', '/alunos/{id}', DesativarAlunoAction::class);
-$http->router()->map('POST', '/alunos', CadastrarAlunoAction::class);
-$http->router()->map('GET', '/', function (ServerRequestInterface $request) {
+$app->router()->map('GET', '/alunos', ListarTodosAlunosAction::class);
+$app->router()->map('DELETE', '/alunos/{id}', DesativarAlunoAction::class);
+$app->router()->map('POST', '/alunos', CadastrarAlunoAction::class);
+$app->router()->map('GET', '/', function (ServerRequestInterface $request) {
     $response = (new ResponseFactory())->createResponse();
     $response->getBody()->write(file_get_contents('home.html'));
     return $response;
 });
 
 // Error Handler
-$http->router()->middleware($container->get(ErrorHandlerMiddleware::class));
+$app->router()->middleware($container->get(ErrorHandlerMiddleware::class));
 
 // Run!
-$http->dispatch();
+$app->run();

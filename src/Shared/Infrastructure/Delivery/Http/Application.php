@@ -7,7 +7,7 @@ use Laminas\HttpHandlerRunner\Emitter\EmitterInterface;
 use League\Route\Router;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class Http
+final class Application
 {
     private Router $router;
     private EmitterInterface $emitter;
@@ -28,7 +28,7 @@ final class Http
         return $this->router;
     }
 
-    public function dispatch(): void
+    public function run(): void
     {
         $this->emitter->emit(
             $this->router->dispatch($this->request)
