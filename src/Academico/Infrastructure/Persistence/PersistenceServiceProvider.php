@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace AgetalkDDD\Academico\Infrastructure\Persistence;
 
 use AgetalkDDD\Academico\Domain\Model\AlunoRepository;
+use AgetalkDDD\Academico\Domain\Model\AnemicAlunoRepository;
 use AgetalkDDD\Academico\Domain\Model\VerificacaoEmailUnico;
-use AgetalkDDD\Academico\Infrastructure\Persistence\FileAlunoRepository;
 use Habemus\Container;
 use Habemus\ServiceProvider\ServiceProvider;
 

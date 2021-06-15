@@ -18,14 +18,10 @@ final class Aluno extends AggregateRoot
 
     public function __construct(AlunoId $id, RGA $matricula, string $nome, Email $email)
     {
-        if (empty($nome)) {
-            throw new DomainException("Nome do aluno não pode ser vazio.");
-        }
-
         $this->id = $id;
         $this->matricula = $matricula;
         $this->email = $email;
-        $this->nome = $nome;
+        $this->setNome($nome);
         $this->ativo = true;
         $this->dataCadastro = new DateTimeImmutable();
 
@@ -38,7 +34,7 @@ final class Aluno extends AggregateRoot
             throw new DomainException("Aluno inativo não pode ser alterado.");
         }
 
-        $this->nome = $novoNome;
+        $this->setNome($novoNome);
         $this->email = new Email($novoEmail);
     }
 
@@ -70,6 +66,15 @@ final class Aluno extends AggregateRoot
     public function dataCadastro(): DateTimeImmutable
     {
         return $this->dataCadastro;
+    }
+
+    private function setNome(string $nome)
+    {
+        if (empty($nome)) {
+            throw new DomainException("Nome do aluno não pode ser vazio.");
+        }
+
+        $this->nome = $nome;
     }
 
     public function toDTO(): AlunoDTO
