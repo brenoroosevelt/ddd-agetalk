@@ -8,10 +8,6 @@ use Psr\Http\Message\ResponseInterface;
 
 final class JsonResponseFactory implements ResponseFactory
 {
-    const HTTP_STATUS_OK = 200;
-    const HTTP_STATUS_CREATED = 201;
-    const HTTP_STATUS_ERROR = 400;
-
     private ResponseFactoryInterface $responseFactory;
 
     public function __construct(ResponseFactoryInterface $responseFactory)
@@ -24,9 +20,9 @@ final class JsonResponseFactory implements ResponseFactory
         return $this->newJson(self::HTTP_STATUS_OK, $data);
     }
 
-    public function error($data = null): ResponseInterface
+    public function error($data = null, int $code = self::HTTP_STATUS_BAD_REQUEST): ResponseInterface
     {
-        return $this->newJson(self::HTTP_STATUS_ERROR, $data);
+        return $this->newJson($code, $data);
     }
 
     public function created($data = null): ResponseInterface

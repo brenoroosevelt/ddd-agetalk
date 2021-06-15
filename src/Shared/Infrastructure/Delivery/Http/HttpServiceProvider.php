@@ -47,5 +47,11 @@ final class HttpServiceProvider implements ServiceProvider
             Router::class,
             (new Router())->setStrategy((new ApplicationStrategy())->setContainer($container))
         );
+
+        // Error Handler
+        $container->add(
+            ErrorHandlerInterface::class,
+            ErrorHandler::class
+        );
     }
 }

@@ -6,7 +6,6 @@ use AgetalkDDD\Academico\Infrastructure\Delivery\Http\Actions\DesativarAlunoActi
 use AgetalkDDD\Academico\Infrastructure\Delivery\Http\Actions\ListarTodosAlunosAction;
 use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Application;
 use AgetalkDDD\Academico\Infrastructure\Persistence\PersistenceServiceProvider;
-use AgetalkDDD\Shared\Infrastructure\Delivery\Http\ErrorHandlerMiddleware;
 use AgetalkDDD\Shared\Infrastructure\Delivery\Http\HttpServiceProvider;
 use Habemus\Container;
 use Laminas\Diactoros\ResponseFactory;
@@ -28,9 +27,6 @@ $app->router()->map('GET', '/', function (ServerRequestInterface $request) {
     $response->getBody()->write(file_get_contents('home.html'));
     return $response;
 });
-
-// Error Handler
-$app->router()->middleware($container->get(ErrorHandlerMiddleware::class));
 
 // Run!
 $app->run();
