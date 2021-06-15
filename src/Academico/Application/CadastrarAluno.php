@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Academico\Application;
 
-use AgetalkDDD\Academico\Domain\Model\AlunoDTO;
+use AgetalkDDD\Academico\Domain\Model\AlunoDto;
 use AgetalkDDD\Academico\Domain\Model\AlunoFactory;
 use AgetalkDDD\Academico\Domain\Model\AlunoRepository;
 use AgetalkDDD\Shared\Application\ApplicationService;
@@ -19,7 +19,7 @@ final class CadastrarAluno implements ApplicationService
         $this->repository = $alunoRepository;
     }
 
-    public function execute(CadastrarAlunoCommand $command): AlunoDTO
+    public function execute(CadastrarAlunoCommand $command): AlunoDto
     {
         $aluno = $this->factory->novo($command->nome(), $command->email());
         $this->repository->save($aluno);

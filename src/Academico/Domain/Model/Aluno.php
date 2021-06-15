@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Academico\Domain\Model;
 
-use AgetalkDDD\Shared\Domain\AggregateRoot;
+use AgetalkDDD\Shared\Domain\Support\AggregateRoot;
 use AgetalkDDD\Shared\Domain\Model\Email;
 use DateTimeImmutable;
 use DomainException;
 
 final class Aluno extends AggregateRoot
 {
-    private RGA $matricula;
+    private Rga $matricula;
     private Email $email;
     private DateTimeImmutable $dataCadastro;
     private string $nome;
     private bool $ativo;
 
-    public function __construct(AlunoId $id, RGA $matricula, string $nome, Email $email)
+    public function __construct(AlunoId $id, Rga $matricula, string $nome, Email $email)
     {
         $this->id = $id;
         $this->matricula = $matricula;
@@ -58,7 +58,7 @@ final class Aluno extends AggregateRoot
         return $this->ativo;
     }
 
-    public function matricula(): RGA
+    public function matricula(): Rga
     {
         return $this->matricula;
     }
@@ -77,9 +77,9 @@ final class Aluno extends AggregateRoot
         $this->nome = $nome;
     }
 
-    public function toDTO(): AlunoDTO
+    public function toDTO(): AlunoDto
     {
-        return new AlunoDTO(
+        return new AlunoDto(
             $this->identity(),
             $this->nome,
             $this->dataCadastro,

@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Academico\Domain\Model;
 
-final class RGA
+use AgetalkDDD\Shared\Domain\Support\ValueObject;
+
+final class Rga extends ValueObject
 {
     private string $matricula;
 

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace AgetalkDDD\Shared\Domain;
+namespace AgetalkDDD\Shared\Domain\Support;
 
 use AgetalkDDD\Shared\Application\EventManager;
 

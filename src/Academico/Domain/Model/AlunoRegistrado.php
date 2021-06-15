@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Academico\Domain\Model;
 
-use AgetalkDDD\Shared\Domain\DomainEvent;
+use AgetalkDDD\Shared\Domain\Support\DomainEvent;
 use DateTimeImmutable;
 
 final class AlunoRegistrado implements DomainEvent

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Academico\Application;
 
-use AgetalkDDD\Academico\Domain\Model\AlunoDTO;
+use AgetalkDDD\Academico\Domain\Model\AlunoDto;
 use AgetalkDDD\Academico\Domain\Model\AlunoRepository;
 use AgetalkDDD\Shared\Application\ApplicationService;
 
@@ -16,7 +16,7 @@ final class DesativarAluno implements ApplicationService
         $this->repository = $alunoRepository;
     }
 
-    public function execute(DesativarAlunoCommand $command): AlunoDTO
+    public function execute(DesativarAlunoCommand $command): AlunoDto
     {
         $aluno = $this->repository->byId($command->id());
         $aluno->desativar();

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Anemic\Application;
 
-use AgetalkDDD\Academico\Domain\Model\RGA;
+use AgetalkDDD\Academico\Domain\Model\Rga;
 use AgetalkDDD\Anemic\Domain\Model\AnemicAluno;
 use AgetalkDDD\Anemic\Domain\Model\AlunoRepository;
 use AgetalkDDD\Shared\Domain\Model\Email;
@@ -45,7 +45,7 @@ final class AlunoService
         $this->validarNome($nome);
 
         $aluno = new AnemicAluno(
-            RGA::aleatorio(),
+            Rga::aleatorio(),
             new Email($email),
             new DateTimeImmutable(),
             $nome,

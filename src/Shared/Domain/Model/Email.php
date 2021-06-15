@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Shared\Domain\Model;
 
-use AgetalkDDD\Shared\Domain\ValueObject;
+use AgetalkDDD\Shared\Domain\Support\ValueObject;
 use DomainException;
 
 final class Email extends ValueObject

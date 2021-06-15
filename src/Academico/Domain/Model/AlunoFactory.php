@@ -22,6 +22,6 @@ final class AlunoFactory
             throw new DomainException("Este e-mail já está sendo usado: $email");
         }
 
-        return new Aluno(AlunoId::new(), RGA::aleatorio(), $nome, $email);
+        return new Aluno(AlunoId::new(), Rga::aleatorio(), $nome, $email);
     }
 }

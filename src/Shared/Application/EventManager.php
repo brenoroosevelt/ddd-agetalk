@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Shared\Application;
 
-use AgetalkDDD\Shared\Domain\DomainEvent;
+use AgetalkDDD\Shared\Domain\Support\DomainEvent;
 
 final class EventManager
 {

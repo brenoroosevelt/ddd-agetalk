@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace AgetalkDDD\Academico\Application;
 
 use AgetalkDDD\Academico\Domain\Model\Aluno;
-use AgetalkDDD\Academico\Domain\Model\AlunoDTO;
+use AgetalkDDD\Academico\Domain\Model\AlunoDto;
 use AgetalkDDD\Academico\Domain\Model\AlunoRepository;
 use AgetalkDDD\Shared\Application\ApplicationService;
 
@@ -18,7 +18,7 @@ final class ListarTodosAlunos implements ApplicationService
     }
 
     /**
-     * @return AlunoDTO[]
+     * @return AlunoDto[]
      */
     public function execute(): array
     {
