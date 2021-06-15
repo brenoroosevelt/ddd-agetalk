@@ -12,9 +12,10 @@ $ cd ddd-agetalk
 $ composer update
 ```
 ``` bash
-$ cd public
-$ php -S localhost:8989
+$ cd web
+$ php -S localhost:8000
 ```
+
 ### Endpoints
 * `/`: tela de cadastro; 
 * `GET` `/alunos`: lista todos os alunos;  
