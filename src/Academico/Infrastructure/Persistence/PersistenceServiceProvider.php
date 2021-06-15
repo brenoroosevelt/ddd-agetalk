@@ -12,7 +12,18 @@ class PersistenceServiceProvider implements ServiceProvider
 {
     public function register(Container $container): void
     {
-        $container->add(AlunoRepository::class, FileAlunoRepository::class);
-        $container->add(VerificacaoEmailUnico::class, FileAlunoRepository::class);
+        $repository = new EmArquivoAlunoRepository(STORAGE_PATH . "alunos.db");
+
+        // AlunoRepository
+        $container->add(
+            AlunoRepository::class,
+            $repository
+        );
+
+        // VerificacaoEmailUnico
+        $container->add(
+            VerificacaoEmailUnico::class,
+            $repository
+        );
     }
 }

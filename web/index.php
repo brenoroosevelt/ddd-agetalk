@@ -13,6 +13,11 @@ use Psr\Http\Message\ServerRequestInterface;
 
 include '../vendor/autoload.php';
 
+// Constants
+if (!defined('STORAGE_PATH')) {
+    define('STORAGE_PATH', __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "storage");
+}
+
 // Application
 $container = new Container();
 $container->addProvider(new PersistenceServiceProvider(), new HttpServiceProvider());

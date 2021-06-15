@@ -9,13 +9,8 @@ use AgetalkDDD\Academico\Domain\Model\VerificacaoEmailUnico;
 use AgetalkDDD\Shared\Domain\Model\Email;
 use AgetalkDDD\Shared\Infrastructure\Persistence\FileRepository;
 
-class FileAlunoRepository extends FileRepository implements AlunoRepository, VerificacaoEmailUnico
+class EmArquivoAlunoRepository extends FileRepository implements AlunoRepository, VerificacaoEmailUnico
 {
-    public function __construct()
-    {
-        parent::__construct(__DIR__ . "/../../../../storage/alunos.db");
-    }
-
     public function byId(string $id): Aluno
     {
         return $this->get($id);
