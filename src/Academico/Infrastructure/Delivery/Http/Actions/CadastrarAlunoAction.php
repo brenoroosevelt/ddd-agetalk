@@ -30,6 +30,6 @@ final class CadastrarAlunoAction implements Action
         );
 
         $aluno = $this->cadastrarAlunoService->execute($command);
-        return $this->response->ok($aluno);
+        return $this->response->created($aluno);
     }
 }
