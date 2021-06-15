@@ -5,9 +5,7 @@ namespace AgetalkDDD\Academico\Domain\Model;
 
 interface AlunoRepository
 {
-    /**
-     * @return Aluno[]
-     */
+    /** @return Aluno[] */
     public function all(): array;
     public function byId(string $id): Aluno;
     public function save(Aluno $aluno): void;
