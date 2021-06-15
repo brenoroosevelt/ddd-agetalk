@@ -5,7 +5,7 @@ namespace AgetalkDDD\Academico\Domain\Model;
 
 use AgetalkDDD\Shared\Domain\Support\ValueObject;
 
-final class Rga extends ValueObject
+final class Matricula extends ValueObject
 {
     private string $matricula;
 
@@ -21,7 +21,7 @@ final class Rga extends ValueObject
 
     public function format()
     {
-        return 'RGA#' . $this->matricula;
+        return '#' . $this->matricula;
     }
 
     public function __toString(): string

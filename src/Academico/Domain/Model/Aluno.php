@@ -10,13 +10,13 @@ use DomainException;
 
 final class Aluno extends AggregateRoot
 {
-    private Rga $matricula;
+    private Matricula $matricula;
     private Email $email;
     private DateTimeImmutable $dataCadastro;
     private string $nome;
     private bool $ativo;
 
-    public function __construct(AlunoId $id, Rga $matricula, string $nome, Email $email)
+    public function __construct(AlunoId $id, Matricula $matricula, string $nome, Email $email)
     {
         $this->id = $id;
         $this->matricula = $matricula;
@@ -58,7 +58,7 @@ final class Aluno extends AggregateRoot
         return $this->ativo;
     }
 
-    public function matricula(): Rga
+    public function matricula(): Matricula
     {
         return $this->matricula;
     }

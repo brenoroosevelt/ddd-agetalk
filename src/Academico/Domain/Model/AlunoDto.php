@@ -7,12 +7,13 @@ use AgetalkDDD\Shared\Domain\Model\Email;
 use DateTimeImmutable;
 use JsonSerializable;
 
+// Data Transfer Object
 final class AlunoDto implements JsonSerializable
 {
     private AlunoId $id;
     private string $nome;
     private DateTimeImmutable $dataCadastro;
-    private Rga $matricula;
+    private Matricula $matricula;
     private Email $email;
     private bool $ativo;
 
@@ -20,7 +21,7 @@ final class AlunoDto implements JsonSerializable
         AlunoId $id,
         string $nome,
         DateTimeImmutable $dataCadastro,
-        Rga $matricula,
+        Matricula $matricula,
         Email $email,
         bool $ativo
     ) {
@@ -47,7 +48,7 @@ final class AlunoDto implements JsonSerializable
         return $this->dataCadastro;
     }
 
-    public function matricula(): Rga
+    public function matricula(): Matricula
     {
         return $this->matricula;
     }

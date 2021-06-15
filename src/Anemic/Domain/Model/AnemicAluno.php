@@ -3,19 +3,19 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Anemic\Domain\Model;
 
-use AgetalkDDD\Academico\Domain\Model\Rga;
+use AgetalkDDD\Academico\Domain\Model\Matricula;
 use AgetalkDDD\Shared\Domain\Model\Email;
 use DateTimeImmutable;
 
 class AnemicAluno
 {
-    private Rga $matricula;
+    private Matricula $matricula;
     private Email $email;
     private DateTimeImmutable $dtCadastro;
     private string $nome;
     private bool $ativo;
 
-    public function __construct(Rga $rga, Email $email, DateTimeImmutable $dtCadastro, string $nome, bool $ativo)
+    public function __construct(Matricula $rga, Email $email, DateTimeImmutable $dtCadastro, string $nome, bool $ativo)
     {
         $this->matricula = $rga;
         $this->email = $email;
@@ -24,7 +24,7 @@ class AnemicAluno
         $this->ativo = $ativo;
     }
 
-    public function matricula(): Rga
+    public function matricula(): Matricula
     {
         return $this->matricula;
     }
@@ -49,7 +49,7 @@ class AnemicAluno
         return $this->ativo;
     }
 
-    public function setMatricula(Rga $matricula): void
+    public function setMatricula(Matricula $matricula): void
     {
         $this->matricula = $matricula;
     }
