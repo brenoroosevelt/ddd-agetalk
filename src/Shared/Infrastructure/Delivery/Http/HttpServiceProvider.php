@@ -18,13 +18,31 @@ final class HttpServiceProvider implements ServiceProvider
 {
     public function register(Container $container): void
     {
-        $container->add(ResponseFactory::class, JsonResponseFactory::class);
-        $container->add(ResponseFactoryInterface::class, LaminasResponseFactory::class);
-        $container->add(EmitterInterface::class, new SapiEmitter());
+        // ResponseFactory
+        $container->add(
+            ResponseFactory::class,
+            JsonResponseFactory::class
+        );
+
+        // PSR ResponseFactoryInterface
+        $container->add(
+            ResponseFactoryInterface::class,
+            LaminasResponseFactory::class
+        );
+
+        // Emmiter
+        $container->add(
+            EmitterInterface::class,
+            new SapiEmitter()
+        );
+
+        // ServerRequest
         $container->add(
             ServerRequestInterface::class,
             ServerRequestFactory::fromGlobals($_SERVER, $_GET, $_POST, $_COOKIE, $_FILES)
         );
+
+        // Router
         $container->add(
             Router::class,
             (new Router())->setStrategy((new ApplicationStrategy())->setContainer($container))
