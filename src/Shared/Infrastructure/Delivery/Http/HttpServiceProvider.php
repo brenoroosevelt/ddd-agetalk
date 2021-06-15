@@ -8,7 +8,7 @@ use Habemus\ServiceProvider\ServiceProvider;
 use Laminas\Diactoros\ResponseFactory;
 use Psr\Http\Message\ResponseFactoryInterface;
 
-class HttpServiceProvider implements ServiceProvider
+final class HttpServiceProvider implements ServiceProvider
 {
     public function register(Container $container): void
     {

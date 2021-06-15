@@ -9,7 +9,7 @@ use League\Route\Router;
 use League\Route\Strategy\ApplicationStrategy;
 use Psr\Container\ContainerInterface;
 
-class Application
+final class Application
 {
     private Router $router;
     private ContainerInterface $container;
