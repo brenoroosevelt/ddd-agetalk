@@ -76,16 +76,4 @@ final class Aluno extends AggregateRoot
 
         $this->nome = $nome;
     }
-
-    public function toDTO(): AlunoDto
-    {
-        return new AlunoDto(
-            $this->identity(),
-            $this->nome,
-            $this->dataCadastro,
-            $this->matricula,
-            $this->email,
-            $this->ativo
-        );
-    }
 }

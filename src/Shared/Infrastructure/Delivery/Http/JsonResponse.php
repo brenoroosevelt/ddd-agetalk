@@ -3,14 +3,15 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Shared\Infrastructure\Delivery\Http;
 
-use Psr\Http\Message\ResponseFactoryInterface;
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseFactoryInterface as PsrResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 
-final class JsonResponseFactory implements ResponseFactory
+final class JsonResponse implements ResponseFactoryInterface
 {
-    private ResponseFactoryInterface $responseFactory;
+    private PsrResponseFactoryInterface $responseFactory;
 
-    public function __construct(ResponseFactoryInterface $responseFactory)
+    public function __construct(PsrResponseFactoryInterface $responseFactory)
     {
         $this->responseFactory = $responseFactory;
     }

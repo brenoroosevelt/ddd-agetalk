@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Shared\Infrastructure\Delivery\Http;
 
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ErrorHandlerInterface;
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ResponseFactoryInterface;
 use Habemus\Container;
 use Habemus\ServiceProvider\ServiceProvider;
 use Laminas\Diactoros\ResponseFactory as LaminasResponseFactory;
@@ -11,22 +13,22 @@ use Laminas\HttpHandlerRunner\Emitter\EmitterInterface;
 use Laminas\HttpHandlerRunner\Emitter\SapiEmitter;
 use League\Route\Router;
 use League\Route\Strategy\ApplicationStrategy;
-use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseFactoryInterface as PsrResponseFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 final class HttpServiceProvider implements ServiceProvider
 {
     public function register(Container $container): void
     {
-        // ResponseFactory
+        // ResponseFactoryInterface
         $container->add(
-            ResponseFactory::class,
-            JsonResponseFactory::class
+            ResponseFactoryInterface::class,
+            JsonResponse::class
         );
 
         // PSR ResponseFactoryInterface
         $container->add(
-            ResponseFactoryInterface::class,
+            PsrResponseFactoryInterface::class,
             LaminasResponseFactory::class
         );
 

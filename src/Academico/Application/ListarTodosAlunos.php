@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace AgetalkDDD\Academico\Application;
 
 use AgetalkDDD\Academico\Domain\Model\Aluno;
-use AgetalkDDD\Academico\Domain\Model\AlunoDto;
 use AgetalkDDD\Academico\Domain\Model\AlunoRepository;
 use AgetalkDDD\Shared\Application\ApplicationService;
 
@@ -24,7 +23,7 @@ final class ListarTodosAlunos implements ApplicationService
     {
         return array_map(
             function (Aluno $aluno) {
-                return $aluno->toDTO();
+                return AlunoDto::fromEntity($aluno);
             },
             $this->repository->all()
         );

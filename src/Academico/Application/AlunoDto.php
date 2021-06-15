@@ -1,8 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace AgetalkDDD\Academico\Domain\Model;
+namespace AgetalkDDD\Academico\Application;
 
+use AgetalkDDD\Academico\Domain\Model\Aluno;
+use AgetalkDDD\Academico\Domain\Model\AlunoId;
+use AgetalkDDD\Academico\Domain\Model\Matricula;
 use AgetalkDDD\Shared\Domain\Model\Email;
 use DateTimeImmutable;
 use JsonSerializable;
@@ -31,6 +34,18 @@ final class AlunoDto implements JsonSerializable
         $this->matricula = $matricula;
         $this->email = $email;
         $this->ativo = $ativo;
+    }
+
+    public static function fromEntity(Aluno $aluno): self
+    {
+        return new self(
+            $aluno->identity(),
+            $aluno->nome(),
+            $aluno->dataCadastro(),
+            $aluno->matricula(),
+            $aluno->email(),
+            $aluno->ativo()
+        );
     }
 
     public function id(): AlunoId

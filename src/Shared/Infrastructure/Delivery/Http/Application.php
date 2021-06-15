@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Shared\Infrastructure\Delivery\Http;
 
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ErrorHandlerInterface;
 use Laminas\HttpHandlerRunner\Emitter\EmitterInterface;
 use League\Route\Router;
 use Psr\Http\Message\ServerRequestInterface;

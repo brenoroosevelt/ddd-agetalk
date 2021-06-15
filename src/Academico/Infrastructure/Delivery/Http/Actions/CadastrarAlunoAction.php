@@ -5,17 +5,17 @@ namespace AgetalkDDD\Academico\Infrastructure\Delivery\Http\Actions;
 
 use AgetalkDDD\Academico\Application\CadastrarAluno;
 use AgetalkDDD\Academico\Application\CadastrarAlunoCommand;
-use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Action;
-use AgetalkDDD\Shared\Infrastructure\Delivery\Http\ResponseFactory;
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ActionInterface;
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-final class CadastrarAlunoAction implements Action
+final class CadastrarAlunoAction implements ActionInterface
 {
     private CadastrarAluno $cadastrarAlunoService;
-    private ResponseFactory $response;
+    private ResponseFactoryInterface $response;
 
-    public function __construct(CadastrarAluno $cadastrarAlunoService, ResponseFactory $response)
+    public function __construct(CadastrarAluno $cadastrarAlunoService, ResponseFactoryInterface $response)
     {
         $this->cadastrarAlunoService = $cadastrarAlunoService;
         $this->response = $response;

@@ -28,9 +28,7 @@ class FileAlunoRepository extends FileRepository implements AlunoRepository, Ver
 
     public function ehUnico(Email $email): bool
     {
-        /**
- * @var Aluno $data
-*/
+        /** @var Aluno $data */
         foreach ($this->data as $data) {
             if ($data->email()->equal($email)) {
                 return false;
