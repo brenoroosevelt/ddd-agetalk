@@ -8,7 +8,7 @@ use AgetalkDDD\Academico\Domain\Model\VerificacaoEmailUnico;
 use Habemus\Container;
 use Habemus\ServiceProvider\ServiceProvider;
 
-class PersistenceServiceProvider implements ServiceProvider
+final class PersistenceServiceProvider implements ServiceProvider
 {
     public function register(Container $container): void
     {
