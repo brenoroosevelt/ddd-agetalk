@@ -9,7 +9,7 @@ use AgetalkDDD\Academico\Domain\Model\VerificacaoEmailUnico;
 use AgetalkDDD\Shared\Domain\Model\Email;
 use AgetalkDDD\Shared\Infrastructure\Persistence\FileRepository;
 
-class EmArquivoAlunoRepository extends FileRepository implements AlunoRepository, VerificacaoEmailUnico
+class AlunoFileRepository extends FileRepository implements AlunoRepository, VerificacaoEmailUnico
 {
     public function byId(string $id): Aluno
     {

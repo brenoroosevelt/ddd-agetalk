@@ -12,7 +12,7 @@ class PersistenceServiceProvider implements ServiceProvider
 {
     public function register(Container $container): void
     {
-        $repository = new EmArquivoAlunoRepository(STORAGE_PATH . "alunos.db");
+        $repository = new AlunoFileRepository(STORAGE_PATH . "alunos.db");
 
         // AlunoRepository
         $container->add(
