@@ -7,7 +7,7 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 
-interface ErrorHandlerInterface
+interface ErrorRenderInterface
 {
-    public function handle(ServerRequestInterface $request, Throwable $error): ResponseInterface;
+    public function render(ServerRequestInterface $request, Throwable $error): ResponseInterface;
 }

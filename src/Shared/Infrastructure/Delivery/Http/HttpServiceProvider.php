@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Shared\Infrastructure\Delivery\Http;
 
-use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ErrorHandlerInterface;
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ErrorRenderInterface;
 use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ResponseFactoryInterface;
 use Habemus\Container;
 use Habemus\ServiceProvider\ServiceProvider;
@@ -52,8 +52,8 @@ final class HttpServiceProvider implements ServiceProvider
 
         // Error Handler
         $container->add(
-            ErrorHandlerInterface::class,
-            ErrorHandler::class
+            ErrorRenderInterface::class,
+            ErrorRender::class
         );
     }
 }

@@ -15,7 +15,7 @@ include '../vendor/autoload.php';
 
 // Constants
 if (!defined('STORAGE_PATH')) {
-    define('STORAGE_PATH', __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "storage");
+    define('STORAGE_PATH', __DIR__ . DIRECTORY_SEPARATOR . ".." . DIRECTORY_SEPARATOR . "storage" . DIRECTORY_SEPARATOR);
 }
 
 // Application

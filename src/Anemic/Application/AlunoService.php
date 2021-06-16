@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace AgetalkDDD\Anemic\Application;
 
 use AgetalkDDD\Academico\Domain\Model\Matricula;
+use AgetalkDDD\Academico\Domain\Model\MatriculaSequencia;
 use AgetalkDDD\Anemic\Domain\Model\AnemicAluno;
 use AgetalkDDD\Anemic\Domain\Model\AlunoRepository;
 use AgetalkDDD\Shared\Domain\Model\Email;
@@ -13,10 +14,12 @@ use DomainException;
 final class AlunoService
 {
     private AlunoRepository $repository;
+    private MatriculaSequencia $matriculaSequencia;
 
-    public function __construct(AlunoRepository $repository)
+    public function __construct(AlunoRepository $repository, MatriculaSequencia $matriculaSequencia)
     {
         $this->repository = $repository;
+        $this->matriculaSequencia = $matriculaSequencia;
     }
 
     public function alterarDados(string $id, string $nome, string $email): AnemicAluno
@@ -45,7 +48,7 @@ final class AlunoService
         $this->validarNome($nome);
 
         $aluno = new AnemicAluno(
-            Matricula::aleatorio(),
+            Matricula::novaMatricula($this->matriculaSequencia),
             new Email($email),
             new DateTimeImmutable(),
             $nome,

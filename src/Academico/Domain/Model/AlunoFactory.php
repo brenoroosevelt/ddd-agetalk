@@ -9,10 +9,12 @@ use DomainException;
 final class AlunoFactory
 {
     private VerificacaoEmailUnico $emailUnicoService;
+    private MatriculaSequencia $matriculaSequencia;
 
-    public function __construct(VerificacaoEmailUnico $emailUnicoService)
+    public function __construct(VerificacaoEmailUnico $emailUnicoService, MatriculaSequencia $matriculaSequencia)
     {
         $this->emailUnicoService = $emailUnicoService;
+        $this->matriculaSequencia = $matriculaSequencia;
     }
 
     public function novo(string $nome, string $email): Aluno
@@ -22,6 +24,6 @@ final class AlunoFactory
             throw new DomainException("Este e-mail já está sendo usado: $email");
         }
 
-        return new Aluno(AlunoId::new(), Matricula::aleatorio(), $nome, $email);
+        return new Aluno(AlunoId::new(), Matricula::novaMatricula($this->matriculaSequencia), $nome, $email);
     }
 }

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Shared\Infrastructure\Delivery\Http;
 
-use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ErrorHandlerInterface;
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ErrorRenderInterface;
 use Laminas\HttpHandlerRunner\Emitter\EmitterInterface;
 use League\Route\Router;
 use Psr\Http\Message\ServerRequestInterface;
@@ -13,18 +13,18 @@ final class Application
 {
     private Router $router;
     private EmitterInterface $emitter;
-    private ErrorHandlerInterface $errorHandler;
+    private ErrorRenderInterface $errorRender;
     private ServerRequestInterface $request;
 
     public function __construct(
         Router $router,
         EmitterInterface $emitter,
-        ErrorHandlerInterface $errorHandler,
+        ErrorRenderInterface $errorRender,
         ServerRequestInterface $request
     ) {
         $this->router = $router;
         $this->emitter = $emitter;
-        $this->errorHandler = $errorHandler;
+        $this->errorRender = $errorRender;
         $this->request = $request;
     }
 
@@ -38,7 +38,7 @@ final class Application
         try {
             $response = $this->router->dispatch($this->request);
         } catch (Throwable $error) {
-            $response = $this->errorHandler->handle($this->request, $error);
+            $response = $this->errorRender->render($this->request, $error);
         }
 
         $this->emitter->emit($response);

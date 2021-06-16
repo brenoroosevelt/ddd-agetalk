@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 namespace AgetalkDDD\Shared\Infrastructure\Delivery\Http;
 
-use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ErrorHandlerInterface;
+use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ErrorRenderInterface;
 use AgetalkDDD\Shared\Infrastructure\Delivery\Http\Contracts\ResponseFactoryInterface;
 use League\Route\Http\Exception\HttpExceptionInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Throwable;
 
-final class ErrorHandler implements ErrorHandlerInterface
+final class ErrorRender implements ErrorRenderInterface
 {
     private ResponseFactoryInterface $responseFactory;
 
@@ -19,7 +19,7 @@ final class ErrorHandler implements ErrorHandlerInterface
         $this->responseFactory = $responseFactory;
     }
 
-    public function handle(ServerRequestInterface $request, Throwable $error): ResponseInterface
+    public function render(ServerRequestInterface $request, Throwable $error): ResponseInterface
     {
         $statusCode =
             $error instanceof HttpExceptionInterface ?
