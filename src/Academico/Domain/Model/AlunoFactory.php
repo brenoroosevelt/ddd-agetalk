@@ -20,7 +20,7 @@ final class AlunoFactory
     public function novo(string $nome, string $email): Aluno
     {
         $email = new Email($email);
-        if (!$this->emailUnicoService->ehUnico($email)) {
+        if ($this->emailUnicoService->jaEstaSendoUsado($email)) {
             throw new DomainException("Este e-mail já está sendo usado: $email");
         }
 

@@ -8,5 +8,5 @@ use AgetalkDDD\Shared\Domain\Model\Email;
 
 interface VerificacaoEmailUnico extends DomainService
 {
-    public function ehUnico(Email $email): bool;
+    public function jaEstaSendoUsado(Email $email): bool;
 }

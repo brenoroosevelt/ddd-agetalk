@@ -21,16 +21,16 @@ final class AlunoFileRepository extends FileRepository implements AlunoRepositor
         $this->put($aluno->identity()->value(), $aluno);
     }
 
-    public function ehUnico(Email $email): bool
+    public function jaEstaSendoUsado(Email $email): bool
     {
         /** @var Aluno $data */
         foreach ($this->data as $data) {
             if ($data->email()->equal($email)) {
-                return false;
+                return true;
             }
         }
 
-        return true;
+        return false;
     }
 
     public function total(): int
