@@ -21,7 +21,7 @@ final class CadastrarAluno implements ApplicationService
     public function execute(CadastrarAlunoCommand $command): AlunoDto
     {
         $aluno = $this->factory->novo($command->nome(), $command->email());
-        $this->repository->save($aluno);
+        $this->repository->salvar($aluno);
         return AlunoDto::fromEntity($aluno);
     }
 }

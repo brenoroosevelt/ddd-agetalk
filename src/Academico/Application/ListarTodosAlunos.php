@@ -25,7 +25,7 @@ final class ListarTodosAlunos implements ApplicationService
             function (Aluno $aluno) {
                 return AlunoDto::fromEntity($aluno);
             },
-            $this->repository->all()
+            $this->repository->todos()
         );
     }
 }

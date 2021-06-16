@@ -11,12 +11,12 @@ use AgetalkDDD\Shared\Infrastructure\Persistence\FileRepository;
 
 final class AlunoFileRepository extends FileRepository implements AlunoRepository, VerificacaoEmailUnico
 {
-    public function byId(string $id): Aluno
+    public function porId(string $id): Aluno
     {
         return $this->get($id);
     }
 
-    public function save(Aluno $aluno): void
+    public function salvar(Aluno $aluno): void
     {
         $this->put($aluno->identity()->value(), $aluno);
     }
@@ -33,12 +33,12 @@ final class AlunoFileRepository extends FileRepository implements AlunoRepositor
         return true;
     }
 
-    public function count(): int
+    public function total(): int
     {
         return count($this->data);
     }
 
-    public function all(): array
+    public function todos(): array
     {
         return array_values($this->data);
     }

@@ -17,9 +17,9 @@ final class DesativarAluno implements ApplicationService
 
     public function execute(DesativarAlunoCommand $command): AlunoDto
     {
-        $aluno = $this->repository->byId($command->id());
+        $aluno = $this->repository->porId($command->id());
         $aluno->desativar();
-        $this->repository->save($aluno);
+        $this->repository->salvar($aluno);
         return AlunoDto::fromEntity($aluno);
     }
 }
