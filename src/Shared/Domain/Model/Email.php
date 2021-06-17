@@ -16,7 +16,12 @@ final class Email extends ValueObject
             throw new DomainException("E-mail inválido: $email");
         }
 
-        $this->email = $email;
+        $this->email = trim($email);
+    }
+
+    public function dominio(): string
+    {
+        return explode('@', $this->email)[1];
     }
 
     public function __toString(): string
