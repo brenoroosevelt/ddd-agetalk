@@ -32,7 +32,7 @@ final class HttpServiceProvider implements ServiceProvider
             LaminasResponseFactory::class
         );
 
-        // Emmiter
+        // EmitterInterface
         $container->add(
             EmitterInterface::class,
             new SapiEmitter()
